@@ -10,6 +10,7 @@ namespace LibGit2Sharp.Core
         public FetchPruneStrategy Prune;
         public bool UpdateFetchHead = true;
         public TagFetchMode download_tags;
+        internal GitProxyOptions proxy_opts = new GitProxyOptions() { version = 1 };
         public GitStrArrayManaged custom_headers;
     }
 }

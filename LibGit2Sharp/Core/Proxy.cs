@@ -2155,7 +2155,8 @@ namespace LibGit2Sharp.Core
 
             try
             {
-                int res = NativeMethods.git_remote_connect(remote, direction, ref remoteCallbacks, ref customHeaders.Array);
+                GitProxyOptions options = new GitProxyOptions() { version = 1 };
+                int res = NativeMethods.git_remote_connect(remote, direction, ref remoteCallbacks, ref options, ref customHeaders.Array);
                 Ensure.ZeroResult(res);
             }
             catch (Exception)
