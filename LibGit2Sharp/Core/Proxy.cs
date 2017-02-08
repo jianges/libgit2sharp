@@ -3362,6 +3362,10 @@ namespace LibGit2Sharp.Core
             GetTemplatePath,       // GIT_OPT_GET_TEMPLATE_PATH
             SetTemplatePath,       // GIT_OPT_SET_TEMPLATE_PATH
             SetSslCertLocations,   // GIT_OPT_SET_SSL_CERT_LOCATIONS
+            SetUserAgent,               // GIT_OPT_SET_USER_AGENT
+            EnableStrictObjectCreation, // GIT_OPT_ENABLE_STRICT_OBJECT_CREATION
+            SetSslCiphers,              // GIT_OPT_SET_SSL_CIPHERS
+            EnableOfsDelta,             // GIT_OPT_ENABLE_OFS_DELTA
         }
 
         /// <summary>
@@ -3408,6 +3412,17 @@ namespace LibGit2Sharp.Core
         {
             // libgit2 expects non-zero value for true
             var res = NativeMethods.git_libgit2_opts((int)LibGitOption.EnableCaching, (uint)(enabled ? 1 : 0));
+            Ensure.ZeroResult(res);
+        }
+
+        /// <summary>
+        /// Enable or disable the ofs_delta capabilty
+        /// </summary>
+        /// <param name="enabled">true to enable the ofs_delta capabilty, false otherwise</param>
+        public static void git_libgit2_opts_set_enable_ofsdelta(bool enabled)
+        {
+            // libgit2 expects non-zero value for true
+            var res = NativeMethods.git_libgit2_opts((int)LibGitOption.EnableOfsDelta, (uint)(enabled ? 1 : 0));
             Ensure.ZeroResult(res);
         }
 
