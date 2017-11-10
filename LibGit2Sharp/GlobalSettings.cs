@@ -317,5 +317,14 @@ namespace LibGit2Sharp
         {
             Proxy.git_libgit2_opts_set_enable_ofsdelta(enabled);
         }
+
+        /// <summary>
+        /// Enable or disable the libgit2 strict_object_creation capability
+        /// </summary>
+        /// <param name="enabled">true to enable the strict_object_creation capability, false otherwise</param>
+        public static void SetEnableStrictObjectCreation(bool enabled)
+        {
+            Proxy.git_libgit2_opts_set_enable_strictobjectcreation(enabled);
+        }
     }
 }

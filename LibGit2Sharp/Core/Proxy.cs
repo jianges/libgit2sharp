@@ -3426,6 +3426,17 @@ namespace LibGit2Sharp.Core
             Ensure.ZeroResult(res);
         }
 
+        /// <summary>
+        /// Enable or disable the strict_object_creation capabilty
+        /// </summary>
+        /// <param name="enabled">true to enable the strict_object_creation capabilty, false otherwise</param>
+        public static void git_libgit2_opts_set_enable_strictobjectcreation(bool enabled)
+        {
+            // libgit2 expects non-zero value for true
+            var res = NativeMethods.git_libgit2_opts((int)LibGitOption.EnableStrictObjectCreation, (uint)(enabled ? 1 : 0));
+            Ensure.ZeroResult(res);
+        }
+
         #endregion
 
         private static ICollection<TResult> git_foreach<T, TResult>(
